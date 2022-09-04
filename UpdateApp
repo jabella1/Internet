@@ -2,5 +2,5 @@
  "apkUrl": "https://www.mediafire.com/file/dn4w8je65zj2dyy/JuanFNet(1.2.2).apk/file",
  "versionNotes": "-Se agrego el banner del servidor (muestra el mensaje del servidor VPS)\n-Se agrego la opcion para agregar un codigo para coins ilimitados pero solo los usuarios registrados en este apartado podran hacer uso del codigo\n-Se agrego la vista para ver el numero de la version de los servidores\n-Se migraron todos los servidores a Estados Unidos, es decir , cuando se conecte a un servidor, quedara con IP de USA\n\ndeveloped by : JuanF.",
  "key": "juanfcol",
- "token": "23328f1ac2dbdb4100",
+ "token": "b3cc36b5152ddc11",
  "addHoras": "0"}
