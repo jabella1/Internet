@@ -1,6 +1,6 @@
-{"newVersion": "1.2.1",
- "apkUrl": "https://www.mediafire.com/file/zd5y5rfplsmbprg/JuanFNet(1.2.1).apk/file",
- "versionNotes": "Mejora Realizada.",
+{"newVersion": "1.2.2",
+ "apkUrl": "https://www.mediafire.com/file/dn4w8je65zj2dyy/JuanFNet(1.2.2).apk/file",
+ "versionNotes": "Se agrego el banner del servidor (muestra el mensaje del servidor VPS), se activo la opcion para agregar codigo de coins ilimitados pero solo los usuarios registrados en este apartado podran hacer uso del codigo, se agrego la vista para ver el numero de la version de los servidores y se migraron todos a Estados Unidos, es decir , cuando se conecte a un servidor, quedara con IP de USA. developed by : JuanF.",
  "key": "juanfcol",
- "token": "23328f1ac2dbdb41",
+ "token": "23328f1ac2dbdb410",
  "addHoras": "0"}
