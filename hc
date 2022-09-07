@@ -74,27 +74,27 @@ function xorCrypto(key, data) {
     return result;
 }
 
-const decryptEhi = (configSalt, value) => {
+const decrypthc = (configSalt, value) => {
 	const text = reverseString(value).fromBase64("RkLC2QaVMPYgGJW/A4f7qzDb9e+t6Hr0Zp8OlNyjuxKcTw1o5EIimhBn3UvdSFXs?", "?")
 	return xorCrypto(configSalt, text)
 }
 
-const decryptEhil = (configSalt, value) => {
+const decrypthcl = (configSalt, value) => {
 	const text = reverseString(value).fromBase64("t6uxKcTwhBn3UvRkLC2QaVM1o5A4f7Hr0Zp8OyjqzDb9e+dSFXsEIimPYgGJW/lN?", "?")
 	return xorCrypto(configSalt, text)
 }
 
 class HttpInjector {
-	constructor(ehi) {
-		this.ehi = ehi
-		this.salt = ehi.configSalt
-		this.tunnelMode = ehi.tunnelType
+	constructor(hc) {
+		this.hc = hc
+		this.salt = hc.configSalt
+		this.tunnelMode = hc.tunnelType
 	}
 	decrypt(key) {
-		if (this.ehi.configVersionCode > 10000) {
-			return (this.ehi[key]) ? decryptEhil(this.salt, this.ehi[key]) : 'N/A'
+		if (this.hc.configVersionCode > 10000) {
+			return (this.hc[key]) ? decrypthcl(this.salt, this.hc[key]) : 'N/A'
 		} else {
-			return (this.ehi[key]) ? decryptEhi(this.salt, this.ehi[key]) : 'N/A'
+			return (this.hc[key]) ? decrypthc(this.salt, this.hc[key]) : 'N/A'
 		}
 	}
 	tunnelType() {
@@ -117,32 +117,32 @@ class HttpInjector {
 	}
 }
 
-const parseConfig = (ehi, personalizado = true) => {
+const parseConfig = (hc, personalizado = true) => {
 	
-	if (!ehi.configSalt) ehi.configSalt = "EVZJNI"
+	if (!hc.configSalt) hc.configSalt = "EVZJNI"
 	
-	const httpInjector = new HttpInjector(ehi)
+	const httpInjector = new HttpInjector(hc)
 	
 	var message = ""
 
 	if (personalizado) {
 		
-		if (ehi.tunnelType == "http_obfs_shadowsocks") {
+		if (hc.tunnelType == "http_obfs_shadowsocks") {
 			
 			const settings = JSON.parse(httpInjector.decrypt("httpObfsSettings"))
 			
 			message += `Shadowsocks:\n`
 			message += `Host: ${httpInjector.decrypt("shadowsocksHost")}\n`
-			message += `Puerto:a ${ehi.shadowsocksPort}\n`
+			message += `Puerto:a ${hc.shadowsocksPort}\n`
 			message += `Contra: ${httpInjector.decrypt("shadowsocksPassword")}\n`
-			message += `EncryptMethod: ${ehi.shadowsocksEncryptionMethod.toUpperCase()}\n\n`
+			message += `EncryptMethod: ${hc.shadowsocksEncryptionMethod.toUpperCase()}\n\n`
 			message += `Settings:\n`
 			message += `Method: ${settings.httpMethod}\n`
 			message += `Hostname: ${settings.hostname}\n\n`
 			
 			message += `Tipo de túnel: ${httpInjector.tunnelType()}\n\n`
 			
-		} else if (ehi.tunnelType == "direct_v2r_vmess") {
+		} else if (hc.tunnelType == "direct_v2r_vmess") {
 			
 			message += `V2Ray Settings:\n`
 			message += `Protocol: ${httpInjector.decrypt("v2rProtocol")}\n`
@@ -152,54 +152,54 @@ const parseConfig = (ehi, personalizado = true) => {
 			message += `Alter ID: ${httpInjector.decrypt("v2rAlterId")}\n`
 			message += `Security: ${httpInjector.decrypt("v2rVlessSecurity")}\n`
 			
-			if (ehi.v2rNetwork) message += `Network Type: ${httpInjector.decrypt("v2rNetwork")}\n`
-			if (ehi.v2rWsHeader) message += `Header: ${httpInjector.decrypt("v2rWsHeader")}\n`
-			if (ehi.v2rWsPath) message += `Header Path: ${httpInjector.decrypt("v2rWsPath")}\n`
-			if (ehi.v2rTlsSni) message += `TLS SNI: ${httpInjector.decrypt("v2rTlsSni")}\n`
+			if (hc.v2rNetwork) message += `Network Type: ${httpInjector.decrypt("v2rNetwork")}\n`
+			if (hc.v2rWsHeader) message += `Header: ${httpInjector.decrypt("v2rWsHeader")}\n`
+			if (hc.v2rWsPath) message += `Header Path: ${httpInjector.decrypt("v2rWsPath")}\n`
+			if (hc.v2rTlsSni) message += `TLS SNI: ${httpInjector.decrypt("v2rTlsSni")}\n`
 			
-			if (ehi.v2rRawJson) {
+			if (hc.v2rRawJson) {
 				message = httpInjector.decrypt("v2rRawJson")
 			}
 			
-		} else if (["ssl_proxy_payload_ssh","ssl_ssh","proxy_payload_ssh","direct_payload_ssh","proxy_ssh"].includes(ehi.tunnelType)) {
+		} else if (["ssl_proxy_payload_ssh","ssl_ssh","proxy_payload_ssh","direct_payload_ssh","proxy_ssh"].includes(hc.tunnelType)) {
 			
 			message += `SSH:\n`
 			
-			if (ehi.overwriteServerData) {
-				var serverData = JSON.parse(ehi.overwriteServerData)
+			if (hc.overwriteServerData) {
+				var serverData = JSON.parse(hc.overwriteServerData)
 				message += `Servidor da Evozi: ${serverData.name} (${serverData.ip})\n`
 				message += `Puertos: ${serverData.sshPort} SSH, ${serverData.sshSslPort} SSL\n\n`
 				// message += `User: ${serverData.sshUsername}\n`
 				// message += `Password: ${serverData.sshPassword}\n\n`
 			} else {
 				message += `Host: ${httpInjector.decrypt("host")}\n`
-				message += `Porta: ${ehi.port}\n`
+				message += `Porta: ${hc.port}\n`
 				message += `Usuario: ${httpInjector.decrypt("user")}\n`
 				message += `Contra: ${httpInjector.decrypt("password")}\n\n`
 			}
 			
-			if (ehi.configHwid) {
-				message += `HWID: ${ehi.configHwid}\n`
+			if (hc.configHwid) {
+				message += `HWID: ${hc.configHwid}\n`
 			}
 			
-			if (ehi.payload) {
+			if (hc.payload) {
 				message += `Payload: ${httpInjector.decrypt("payload")}\n\n`
 			}
 			
-			if (ehi.remoteProxy) {
-				if (ehi.remoteProxyUsername) {
+			if (hc.remoteProxy) {
+				if (hc.remoteProxyUsername) {
 					message += `Proxy: ${httpInjector.decrypt("remoteProxy")}\n`
 					message += `Proxy Auth: ${httpInjector.decrypt("remoteProxyUsername")} : ${httpInjector.decrypt("remoteProxyPassword")}\n`
 				} else {
 					message += `Proxy: ${httpInjector.decrypt("remoteProxy")}\n\n`
 				}
 				
-			} else if (ehi.overwriteServerData) {
+			} else if (hc.overwriteServerData) {
 				message += `Proxy: ${serverData.proxyIp}\n`
 				message += `ProxyPort: ${serverData.proxyPort}\n\n`
 			}
 			
-			if (ehi.sniHostname != "N/A" && ehi.tunnelType != "proxy_payload_ssh") {
+			if (hc.sniHostname != "N/A" && hc.tunnelType != "proxy_payload_ssh") {
 				message += `SNI: ${httpInjector.decrypt("sniHostname")}\n\n`
 			}
 			
@@ -207,21 +207,21 @@ const parseConfig = (ehi, personalizado = true) => {
 			
 		}
 		
-		//delete ehi.configSalt
-		delete ehi.configMessage
+		//delete hc.configSalt
+		delete hc.configMessage
 		
 		console.log(message)
 		
-		fs.writeFileSync("/sdcard/ehi.txt", message)
-		fs.writeFileSync("/sdcard/decrypt.txt", JSON.stringify(ehi, null, 4))
+		fs.writeFileSync("/sdcard/hc.txt", message)
+		fs.writeFileSync("/sdcard/decrypt.txt", JSON.stringify(hc, null, 4))
 	
-		return ehi
+		return hc
 		
 	} else {
-		return console.log(ehi)
+		return console.log(hc)
 	}
 	
-	return ehi
+	return hc
 }
 
 console.clear()
