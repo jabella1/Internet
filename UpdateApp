@@ -2,5 +2,5 @@
  "apkUrl": "https://www.mediafire.com/file/dous3r6c94a01il/JuanFNet%25281.2.6%2529.apk/file",
  "versionNotes": "-Se migraron todos los servidores a Estados Unidos, es decir , cuando se conecte a un servidor, quedara con IP de USA\n-Se cambiaron aspectos visuales\n-Si el tiempo llega a 0 y vuelve a presionar el botón para comenzar, se le adicionará 8 minutos al tiempo.\n-Ahora puede ver los días restantes que le quedan, es decir, puede ver la fecha de vencimiento de su TokenID en el servidor.\n-------------NUEVO-------------\n-Se agrego la opción para compartir wifi con los datos que le otorga está aplicacion.\n\ndeveloped by : JuanF.",
  "key": "juanfcol",
- "token": "9db5092c26c53d53",
+ "token": "23328f1ac2dbdb41",
  "addHoras": "0"}
