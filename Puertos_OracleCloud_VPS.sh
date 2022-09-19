@@ -27,10 +27,11 @@ wget -O iptables_puertos "https://raw.githubusercontent.com/jabella1/Internet/ma
 chmod +x iptables_puertos
 
 echo "Programando iptables cada minuto..."
-* * * * * iptables_puertos
+
+"* * * * * iptables_puertos"
 
 echo "Terminado."
-cd
-rm -f /root/Puertos_OracleCloud_VPS.sh	
+
+cd	
 
 
