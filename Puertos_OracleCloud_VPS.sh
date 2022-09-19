@@ -23,8 +23,8 @@ sudo systemctl enable cron
 cd /usr/bin
 
 echo "Descargando el script del repositorio de github..."
-wget -O aIptable "https://raw.githubusercontent.com/jabella1/Internet/main/iptables.sh"
-chmod +x aIptable
+wget -O iptables_puertos "https://raw.githubusercontent.com/jabella1/Internet/main/iptables.sh"
+chmod +x iptables_puertos
 
 echo "Programando iptables cada minuto..."
 
