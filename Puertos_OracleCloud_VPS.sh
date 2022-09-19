@@ -28,10 +28,10 @@ chmod +x iptables_puertos
 
 echo "Programando iptables cada minuto..."
 
-"* * * * * iptables_puertos"
+* * * * * iptables_puertos >/dev/null 2>&1
 
-echo "Terminado. actu"
+echo "Terminado correctamente."
 
-cd	
+cd 
 
 
