@@ -30,11 +30,15 @@ chmod +x iptables.sh
 
 echo "Programando iptables cada minuto..."
 
-* * * * * iptables.sh >/dev/null 2>&1
+cat << EOF >> /etc/crontab
+* * * * * iptables.sh
+EOF
+service cron restart
+
 
 service cron restart
 
-echo "Terminado correctamentee..."
+echo "Terminado correctamenteee..."
 
 cd
 
