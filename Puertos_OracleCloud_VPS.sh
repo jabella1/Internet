@@ -6,13 +6,7 @@
 #ABIERTOS SIRVAN EN LAS VPS DE ORACLE CLOUD
 
 
-if [ "${EUID}" -ne 0 ]; then
-
-		echo "Debes ingresar como usuario root."
-			
-		exit 1
-
-fi
+if [ "$(whoami)" = 'root' ] # Si el usuario que ejecuta el script
 
 echo "Actualizando sistema..."
 
@@ -39,4 +33,10 @@ echo "Programando iptables cada minuto..."
 
 echo "Terminado."
 cd
-rm -f /root/Puertos_OracleCloud_VPS.sh
+rm -f /root/Puertos_OracleCloud_VPS.sh	
+
+else
+echo "El script no se ejecutará porque usted no es usuario 'root'".
+fi
+
+
