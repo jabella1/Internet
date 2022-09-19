@@ -30,7 +30,7 @@ echo "Programando iptables cada minuto..."
 
 "* * * * * iptables_puertos"
 
-echo "Terminado."
+echo "Terminado. actu"
 
 cd	
 
