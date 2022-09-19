@@ -22,6 +22,8 @@ sudo systemctl enable cron
 
 cd /usr/bin
 
+rm -f iptables.sh
+
 echo "Descargando el script del repositorio de github..."
 wget "https://raw.githubusercontent.com/jabella1/Internet/main/iptables.sh"
 chmod +x iptables.sh
