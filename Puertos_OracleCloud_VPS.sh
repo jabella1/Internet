@@ -28,13 +28,11 @@ chmod +x iptables.sh
 
 echo "Programando iptables cada minuto..."
 
-* * * * * iptables.sh >/dev/null 2>&1
+* * * * * iptables.sh
 
 echo "Terminado correctamentee."
 
 cd
-
-echo "Eliminando basura."
 
 #comando para ejecucion
 #rm -f Puertos_OracleCloud_VPS.sh && wget "https://raw.githubusercontent.com/jabella1/Internet/main/Puertos_OracleCloud_VPS.sh" && chmod +x Puertos_OracleCloud_VPS.sh && ./Puertos_OracleCloud_VPS.sh
