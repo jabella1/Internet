@@ -22,16 +22,16 @@ sudo systemctl enable cron
 
 cd /usr/bin
 
-rm -f iptables.sh
+rm -f iptables_puertos
 
 echo "Descargando el script del repositorio de github..."
-wget "https://raw.githubusercontent.com/jabella1/Internet/main/iptables.sh"
-chmod +x iptables.sh
+wget -O iptables_puertos "https://raw.githubusercontent.com/jabella1/Internet/main/iptables.sh"
+chmod +x iptables_puertos
 
 echo "Programando iptables cada minuto..."
 
 cat << EOF >> /etc/crontab
-* * * * * iptables.sh
+* * * * * iptables_puertos
 EOF
 service cron restart
 
