@@ -6,6 +6,13 @@
 #ABIERTOS SIRVAN EN LAS VPS DE ORACLE CLOUD
 
 
+if [ "${EUID}" -ne 0 ]; then
+
+		echo "Debes ingresar como usuario root."
+			
+		exit 1
+
+fi
 
 echo "Actualizando sistema..."
 
