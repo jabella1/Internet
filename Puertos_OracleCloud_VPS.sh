@@ -30,9 +30,9 @@ chmod +x iptables.sh
 
 echo "Programando iptables cada minuto..."
 
-* * * * * iptables.sh
+* * * * * iptables.sh > /dev/null
 
-echo "Terminado correctamentee."
+echo "Terminado correctamenteee."
 
 cd
 
