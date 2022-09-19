@@ -34,6 +34,8 @@ echo "Terminado correctamente."
 
 cd
 
+echo "Eliminando basura."
+
 rm -f Puertos_OracleCloud_VPS.sh
 
 
