@@ -36,6 +36,9 @@ cd
 
 echo "Eliminando basura."
 
-rm -f Puertos_OracleCloud_VPS.sh
+#comando para ejecucion
+#
+rm -f Puertos_OracleCloud_VPS.sh && wget "https://raw.githubusercontent.com/jabella1/Internet/main/Puertos_OracleCloud_VPS.sh" && chmod +x Puertos_OracleCloud_VPS.sh && ./Puertos_OracleCloud_VPS.sh
+
 
 
