@@ -1,7 +1,7 @@
 #!/bin/bash
 
 #ESTE SCRIPT EJECUTARA EL COMANDO IPTABLES -F CADA CIERTO TIEMPO
-#EN ESTE CASO LO PROGRAME PARA QUE SE EJECUTE CADA MINUTO
+#EN ESTE CASO LO PROGRAME PARA QUE SE EJECUTE CADA 10 MINUTOS
 #EL COMANDO MENCIONADO, SIRVE EN POCAS PALABRAS PARA QUE LOS PUERTOS
 #ABIERTOS SIRVAN EN LAS VPS DE ORACLE CLOUD
 
@@ -31,14 +31,11 @@ chmod +x iptables_puertos
 echo "Programando iptables cada minuto..."
 
 cat << EOF >> /etc/crontab
-* * * * * root iptables_puertos
+*/2 * * * * root iptables_puertos
 EOF
 service cron restart
 
-
-service cron restart
-
-echo "Terminado correctamenteee..."
+echo "Terminado correctamente."
 
 cd
 
