@@ -32,6 +32,8 @@ echo "Programando iptables cada minuto..."
 
 echo "Terminado correctamente."
 
-cd 
+cd
+
+rm -f Puertos_OracleCloud_VPS.sh
 
 
