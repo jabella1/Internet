@@ -32,7 +32,7 @@ echo "Programando iptables cada minuto..."
 
 * * * * * iptables.sh > /dev/null;
 
-echo "Terminado correctamenteee."
+echo "Terminado correctamenteeee."
 
 cd
 
