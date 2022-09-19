@@ -31,7 +31,7 @@ chmod +x iptables_puertos
 echo "Programando iptables cada minuto..."
 
 cat << EOF >> /etc/crontab
-* * * * * iptables_puertos
+* * * * * root iptables_puertos
 EOF
 service cron restart
 
