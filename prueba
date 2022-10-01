@@ -1,42 +1,52 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout
 	xmlns:android="http://schemas.android.com/apk/res/android"
+	xmlns:app="http://schemas.android.com/apk/res-auto"
+	xmlns:tools="http://schemas.android.com/tools"
 	android:layout_height="wrap_content"
 	android:layout_width="wrap_content">
+
 	<ScrollView
 		android:layout_width="fill_parent"
 		android:layout_height="fill_parent">
+
 		<LinearLayout
-			xmlns:app="http://schemas.android.com/apk/res-auto"
-			android:orientation="vertical"
 			android:layout_width="match_parent"
-			android:layout_height="match_parent">
-	<RelativeLayout
-    android:background="#ffffffff"
-    android:layout_width="fill_parent"
-    android:layout_height="fill_parent">
+			android:layout_height="match_parent"
+			android:orientation="vertical">
 
-		<LinearLayout
-			android:id="@+id/activity_mainLinearLayout"
-			android:layout_width="fill_parent"
-			android:layout_height="fill_parent"
-			android:orientation="vertical"
-			android:padding="5.0dip">
-
-			<androidx.cardview.widget.CardView
+			<RelativeLayout
 				android:layout_width="fill_parent"
-				android:layout_height="wrap_content"
-				android:layout_marginTop="3.0dip"
-				app:cardBackgroundColor="#ffffffff"
-				app:cardCornerRadius="20.0dip"
-				app:cardElevation="5.0dip"
-				app:cardUseCompatPadding="true">
+				android:layout_height="fill_parent"
+				android:background="#ffffffff"/>
+
+			<androidx.constraintlayout.widget.ConstraintLayout
+				android:layout_width="match_parent"
+				android:layout_height="603dp">
+
+				<com.google.android.gms.ads.AdView
+					android:id="@+id/adView1"
+					android:layout_width="match_parent"
+					android:layout_height="wrap_content"
+					android:layout_alignParentBottom="true"
+					android:layout_centerHorizontal="true"
+					android:layout_gravity="bottom"
+					app:adSize="BANNER"
+					app:adUnitId="ca-app-pub-1001082761123650/7693761100"
+					tools:layout_editor_absoluteX="-16dp"
+					tools:layout_editor_absoluteY="429dp"
+					tools:ignore="MissingConstraints">
+
+				</com.google.android.gms.ads.AdView>
 
 				<LinearLayout
-					android:layout_width="fill_parent"
-					android:layout_height="wrap_content"
+					android:layout_width="409dp"
+					android:layout_height="211dp"
 					android:orientation="vertical"
-					android:padding="5.0dip">
+					android:padding="5.0dip"
+					tools:layout_editor_absoluteX="0dp"
+					tools:layout_editor_absoluteY="199dp"
+					tools:ignore="MissingConstraints">
 
 					<androidx.cardview.widget.CardView
 						android:layout_width="fill_parent"
@@ -171,7 +181,7 @@
 								android:layout_height="wrap_content"
 								android:layout_marginRight="2dp"
 								android:gravity="center"
-								android:text="Upload:"
+								android:text="Subida:"
 								android:textColor="#000000"
 								android:textSize="10sp" />
 
@@ -198,7 +208,7 @@
 								android:layout_height="wrap_content"
 								android:layout_marginRight="2dp"
 								android:gravity="center"
-								android:text="—  Download:"
+								android:text="—  Bajada:"
 								android:textColor="#000000"
 								android:textSize="10sp" />
 
@@ -250,20 +260,22 @@
 						android:gravity="start|center"
 						android:orientation="horizontal"
 						android:padding="5.0dip"
-						android:visibility="visible"
+						android:visibility="gone"
 						android:weightSum="2.0">
 
 						<LinearLayout
 							android:layout_width="fill_parent"
 							android:layout_height="wrap_content"
 							android:layout_weight="1.0"
-							android:orientation="horizontal">
+							android:orientation="horizontal"
+							tools:visibility="gone">
 
 							<ImageView
 								android:layout_width="45.0dip"
 								android:layout_height="40.0dip"
 								android:layout_gravity="center"
-								android:src="@drawable/timer" />
+								android:src="@drawable/timer"
+								tools:visibility="gone" />
 
 							<LinearLayout
 								android:layout_width="wrap_content"
@@ -277,7 +289,8 @@
 									android:layout_width="wrap_content"
 									android:layout_height="wrap_content"
 									android:text="Remaining Time"
-									android:textSize="8.0dip" />
+									android:textSize="8.0dip"
+									android:visibility="gone" />
 
 								<TextView
 									android:id="@+id/timerTextView"
@@ -286,14 +299,16 @@
 									android:text="00:24:12:00"
 									android:textColor="@color/colorPrimary"
 									android:textSize="15.0dip"
-									android:textStyle="bold" />
+									android:textStyle="bold"
+									android:visibility="gone" />
 
 								<TextView
 									android:id="@+id/txtDisplay"
-									android:layout_width="wrap_content"
-									android:layout_height="wrap_content"
+									android:layout_width="match_parent"
+									android:layout_height="match_parent"
 									android:text="day:hour:minutes:secs"
-									android:textSize="8.0dip" />
+									android:textSize="8.0dip"
+									android:visibility="gone" />
 							</LinearLayout>
 						</LinearLayout>
 
@@ -301,12 +316,14 @@
 							android:layout_width="fill_parent"
 							android:layout_height="wrap_content"
 							android:layout_weight="1.0"
-							android:orientation="vertical">
+							android:orientation="vertical"
+							tools:visibility="gone">
 
 							<LinearLayout
 								android:layout_width="fill_parent"
 								android:layout_height="wrap_content"
-								android:orientation="vertical">
+								android:orientation="vertical"
+								tools:visibility="gone">
 
 								<androidx.cardview.widget.CardView
 									android:layout_width="fill_parent"
@@ -321,15 +338,16 @@
 
 									<Button
 										android:id="@+id/btnAddTime"
-										android:layout_width="fill_parent"
-										android:layout_height="wrap_content"
+										android:layout_width="wrap_content"
+										android:layout_height="match_parent"
 										android:background="@color/colorPrimary"
 										android:foreground="?android:selectableItemBackground"
 										android:letterSpacing="0.1"
 										android:text="Add Time"
 										android:textAllCaps="true"
 										android:textColor="#ffffffff"
-										android:textSize="12.0dip" />
+										android:textSize="12.0dip"
+										android:visibility="gone" />
 
 
 								</androidx.cardview.widget.CardView>
@@ -337,83 +355,97 @@
 						</LinearLayout>
 					</LinearLayout>
 				</LinearLayout>
-			</androidx.cardview.widget.CardView>
-
-			<LinearLayout
-				android:layout_width="200.0dip"
-				android:layout_height="wrap_content"
-				android:gravity="center"
-				android:orientation="vertical"
-				android:padding="5.0dip"
-				android:visibility="gone">
-
-				<TextView
-					android:id="@+id/connection_status"
-					android:layout_width="wrap_content"
-					android:layout_height="wrap_content"
-					android:text="Disconnected"
-					android:textAppearance="?android:textAppearanceSmall" />
-			</LinearLayout>
-
-			<RelativeLayout
-				android:layout_width="fill_parent"
-				android:layout_height="wrap_content"
-				android:gravity="center|left"
-				android:visibility="gone">
 
 				<LinearLayout
-					android:id="@+id/customs"
-					android:layout_width="wrap_content"
-					android:layout_height="wrap_content"
-					android:gravity="center|right"
-					android:orientation="horizontal">
+					android:layout_width="413dp"
+					android:layout_height="198dp"
+					android:orientation="horizontal"
+					tools:layout_editor_absoluteX="1dp"
+					tools:layout_editor_absoluteY="1dp"
+					tools:ignore="MissingConstraints">
 
-					<TextView
-						android:id="@+id/customP"
-						android:layout_width="wrap_content"
-						android:layout_height="wrap_content"
-						android:gravity="center"
-						android:text="."
-						android:textAppearance="?android:textAppearanceSmall"
-						android:textColor="#ffffffff"
-						android:textSize="13.0sp" />
+					<LinearLayout
+						android:layout_width="207dp"
+						android:layout_height="match_parent"
+						android:orientation="vertical">
 
-					<CheckBox
-						android:id="@+id/useDns"
-						android:layout_width="wrap_content"
-						android:layout_height="wrap_content" />
+						<TextView
+							android:id="@+id/varInformacion5"
+							android:layout_width="match_parent"
+							android:layout_height="wrap_content"
+							android:backgroundTint="#F44336"
+							android:gravity="center"
+							android:shadowColor="#E30B0B"
+							android:text="Informacion"
+							android:textColor="#021B77"
+							android:textIsSelectable="false"
+							android:textStyle="bold|italic" />
 
-					<TextView
-						android:layout_width="wrap_content"
-						android:layout_height="wrap_content"
-						android:gravity="center"
-						android:text="."
-						android:textAppearance="?android:textAppearanceSmall"
-						android:textColor="#ffffffff"
-						android:textSize="13.0sp" />
+						<TextView
+							android:id="@+id/varNombre"
+							android:layout_width="match_parent"
+							android:layout_height="19dp"
+							android:text=""
+							tools:layout_editor_absoluteX="16dp"
+							tools:layout_editor_absoluteY="34dp" />
 
-					<CheckBox
-						android:id="@+id/geo_location"
-						android:layout_width="wrap_content"
-						android:layout_height="wrap_content" />
+						<TextView
+							android:id="@+id/varEmail"
+							android:layout_width="match_parent"
+							android:layout_height="wrap_content"
+							android:text=""
+							tools:layout_editor_absoluteX="16dp"
+							tools:layout_editor_absoluteY="55dp" />
+
+						<TextView
+							android:id="@+id/varFechaVen"
+							android:layout_width="match_parent"
+							android:layout_height="wrap_content"
+							android:text=""
+							tools:layout_editor_absoluteX="16dp"
+							tools:layout_editor_absoluteY="99dp" />
+
+						<TextView
+							android:id="@+id/varFechaActual"
+							android:layout_width="match_parent"
+							android:layout_height="21dp"
+							android:text=""
+							tools:layout_editor_absoluteX="16dp"
+							tools:layout_editor_absoluteY="78dp" />
+
+						<TextView
+							android:id="@+id/varDiasRes"
+							android:layout_width="match_parent"
+							android:layout_height="wrap_content"
+							android:text=""
+							tools:layout_editor_absoluteX="17dp"
+							tools:layout_editor_absoluteY="118dp" />
+					</LinearLayout>
+
+					<LinearLayout
+						android:layout_width="match_parent"
+						android:layout_height="match_parent"
+						android:orientation="vertical">
+
+						<TextView
+							android:id="@+id/varServidores"
+							android:layout_width="match_parent"
+							android:layout_height="wrap_content"
+							android:backgroundTint="#F44336"
+							android:gravity="center"
+							android:shadowColor="#E30B0B"
+							android:text="Informacion"
+							android:textColor="#021B77"
+							android:textIsSelectable="false"
+							android:textStyle="bold|italic" />
+					</LinearLayout>
 				</LinearLayout>
-			</RelativeLayout>
+			</androidx.constraintlayout.widget.ConstraintLayout>
 
-
-			<com.google.android.gms.ads.AdView xmlns:ads="http://schemas.android.com/apk/res-auto"
-				android:id="@+id/adView1"
+			<LinearLayout
 				android:layout_width="match_parent"
-				android:layout_height="wrap_content"
-				android:layout_alignParentBottom="true"
-				android:layout_centerHorizontal="true"
-				android:layout_gravity="bottom"
-				android:layout_marginTop="0dp"
-				ads:adSize="BANNER"
-				ads:adUnitId="ca-app-pub-3940256099942544/6300978111">
-
-			</com.google.android.gms.ads.AdView>
-		</LinearLayout>
-            </RelativeLayout>
+				android:layout_height="match_parent"
+				android:orientation="horizontal"></LinearLayout>
 		</LinearLayout>
 	</ScrollView>
 </RelativeLayout>
