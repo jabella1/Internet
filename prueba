@@ -1,5 +1,11 @@
-package https.socks.android.util;
+package com.Sockshttp.config.gen;
 
+
+/**
+ * Created by: KervzCodes
+ * Date Crated: 08/10/2020
+ * Project: SocksHttp-master (ENGLISH)
+ **/
 import android.util.Base64;
 import android.util.Log;
 import java.io.UnsupportedEncodingException;
@@ -12,7 +18,7 @@ import javax.crypto.spec.IvParameterSpec;
 import javax.crypto.spec.SecretKeySpec;
 
 /**
- * Encrypt and decrypt messages using AES 256 bit encryption that are compatible with AESCrypt-ObjC and AESCrypt Ruby.
+ * Encrypt and decrypt messages using AES 256 bit encryption that are compatible with rAESCrypt-ObjC and AESCrypt Ruby.
  * <p/>
  * Created by JohnAlvinJA on 12/21/2021.
  */
@@ -30,9 +36,9 @@ public final class AESCrypt {
 
     //togglable log option (please turn off in live!)
     public static boolean DEBUG_LOG_ENABLED = false;
-	private static final byte[] ivBytes = {0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00};
-    private static final String jaTest = "wrnCssKz4oG04oG14oG24oG34oG44oG54oGwwrcs4oC9OifigLI=";
 
+	private static final byte[] ivBytes = {0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00};
+    private static final String PAKYUKA = new String(new byte[]{-37,-90,-31,-100,-111,-31,-100,-112,-31,-100,-113,-31,-100,-114,-31,-100,-116,-31,-100,-120,-31,-100,-121,-31,-100,-122,-31,-100,-126,-31,-100,-127,-31,-100,-128,-31,-100,-117,-31,-100,-118,-31,-100,-119,-31,-100,-123,-31,-100,-124,});
 
     /**
      * Generates SHA256 hash of the password which is used as key
@@ -211,7 +217,7 @@ public final class AESCrypt {
     }
 
     private static String jagen(byte[] bArr) {
-        char[] charArray = JaTest(jaTest).toCharArray();
+        char[] charArray = PAKYUKA.toCharArray();
         StringBuilder sb = new StringBuilder();
         for (byte b : bArr) {
             sb.append(charArray[(b & 240) >> 4]);
@@ -220,12 +226,10 @@ public final class AESCrypt {
         return sb.toString();
     }
 
-    public static String JaTest(String str) {
-        return new String(Base64.decode(str, Base64.NO_WRAP));
-    }
+  
 
     public static String genString(String str) {
-        String var = JaTest(jaTest);
+        String var = PAKYUKA;
         char[] charArray = str.toCharArray();
         int length = str.length() / 2;
         byte[] bArr = new byte[length];
